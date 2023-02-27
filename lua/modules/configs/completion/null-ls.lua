@@ -21,7 +21,7 @@ return function()
 	-- "mason-null-ls" will auto-setup for users.
 	mason_null_ls.setup_handlers({
 		black = function()
-			null_reg(btnf.black.with({ extra_args = { "--fast" } }))
+			null_reg(btnf.black.with({ extra_args = { "--fast", "--line-length", "120" } }))
 		end,
 		markdownlint = function()
 			null_reg(btnf.markdownlint)

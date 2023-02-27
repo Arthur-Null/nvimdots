@@ -82,8 +82,8 @@ local plug_map = {
 
 	-- Plugin: hop
 	["n|<leader>w"] = map_cu("HopWord"):with_noremap():with_desc("jump: Goto word"),
-	["n|<leader>j"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
-	["n|<leader>k"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
+	["n|<leader>hj"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
+	["n|<leader>hk"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
 	["n|<leader>c"] = map_cu("HopChar1"):with_noremap():with_desc("jump: Goto one char"),
 	["n|<leader>cc"] = map_cu("HopChar2"):with_noremap():with_desc("jump: Goto two chars"),
 

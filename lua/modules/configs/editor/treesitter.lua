@@ -77,6 +77,15 @@ return function()
 		},
 		context_commentstring = { enable = true, enable_autocmd = false },
 		matchup = { enable = true },
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection = "<CR>",
+				node_incremental = "<CR>",
+				node_decremental = "<BS>",
+				scope_incremental = "<TAB>",
+			},
+		},
 	})
 	require("nvim-treesitter.install").prefer_git = true
 	if use_ssh then
