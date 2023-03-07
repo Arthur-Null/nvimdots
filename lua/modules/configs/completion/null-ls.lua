@@ -7,7 +7,10 @@ return function()
 	-- Don't specify any config here if you are using the default one.
 	local sources = {
 		btns.formatting.black.with({
-			extra_args = { "--fast" },
+			extra_args = { "--fast", "--line-length", "120" },
+		}),
+		btns.formatting.isort.with({
+			extra_args = { "--line-length", "120" },
 		}),
 		btns.formatting.clang_format.with({
 			filetypes = { "c", "cpp" },
@@ -42,22 +45,7 @@ return function()
 		automatic_installation = false,
 		automatic_setup = true,
 	})
-
-	-- NOTE: Users don't need to specify null-ls sources if using only default config.
-	-- "mason-null-ls" will auto-setup for users.
-	mason_null_ls.setup_handlers({
-		black = function()
-			null_reg(btnf.black.with({ extra_args = { "--fast", "--line-length", "120" } }))
-		end,
-		markdownlint = function()
-			null_reg(btnf.markdownlint)
-			null_reg(btnd.markdownlint.with({ extra_args = { "--disable MD033" } }))
-		end,
-		-- example for changing diagnostics_format
-		-- shellcheck = function()
-		-- 	null_reg(btnd.shellcheck.with({ diagnostics_format = "#{m} [#{s} #{c}]" }))
-		-- end,
-	})
+	require("mason-null-ls").setup_handlers()
 
 	require("completion.formatting").configure_format_on_save()
 end
