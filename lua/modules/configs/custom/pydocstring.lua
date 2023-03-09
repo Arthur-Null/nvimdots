@@ -1,3 +1,3 @@
 return function()
-	vim.api.nvim_exec("let g:pydocstring_formatter = 'numpy'")
+	vim.api.nvim_exec("let g:pydocstring_formatter = 'numpy'", false)
 end
