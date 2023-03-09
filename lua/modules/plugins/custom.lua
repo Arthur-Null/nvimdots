@@ -13,10 +13,10 @@ custom["kylechui/nvim-surround"] = {
 }
 
 custom["heavenshell/vim-pydocstring"] = {
-	lazy = true,
-	cmd = { "Pydocstring" },
+	lazy = false,
+	-- cmd = { "Pydocstring" },
 	build = { "make install" },
-    config = require("custom.pydocstring")
+	config = require("custom.pydocstring"),
 }
 
 return custom
