@@ -16,6 +16,7 @@ custom["heavenshell/vim-pydocstring"] = {
 	lazy = true,
 	cmd = { "Pydocstring" },
 	build = { "make install" },
+    config = require("custom.pydocstring")
 }
 
 return custom
