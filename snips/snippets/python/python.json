@@ -1,0 +1,16 @@
+{
+    "seed": {
+        "prefix": "seed",
+        "body": [
+            "def set_random_seed(seed)",
+            "\ttorch.manual_seed(seed)",
+            "\ttorch.cuda.manual_seed_all(seed)",
+            "\ttorch.backends.cudnn.deterministic = True",
+            "\ttorch.backends.cudnn.benchmark = False",
+            "\tnp.random.seed(seed)",
+            "\trandom.seed(seed)",
+            "\tos.environ['PYTHONHASHSEED'] = str(seed)"
+        ],
+        "description": "function to set random seed"
+    }
+}
