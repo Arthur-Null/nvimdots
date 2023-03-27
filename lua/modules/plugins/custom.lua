@@ -19,4 +19,10 @@ custom["heavenshell/vim-pydocstring"] = {
 	config = require("custom.pydocstring"),
 }
 
+custom["dpayne/CodeGPT.nvim"] = {
+	lazy = true,
+	dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+	cmd = { "Chat" },
+}
+
 return custom
