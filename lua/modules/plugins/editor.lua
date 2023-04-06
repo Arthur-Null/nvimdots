@@ -47,11 +47,17 @@ editor["junegunn/vim-easy-align"] = {
 	lazy = true,
 	cmd = "EasyAlign",
 }
-editor["phaazon/hop.nvim"] = {
+-- editor["phaazon/hop.nvim"] = {
+-- 	lazy = true,
+-- 	branch = "v2",
+-- 	event = "BufReadPost",
+-- 	config = require("editor.hop"),
+-- }
+editor["ggandor/leap.nvim"] = {
 	lazy = true,
-	branch = "v2",
+	dependencies = { "tpope/vim-repeat" },
 	event = "BufReadPost",
-	config = require("editor.hop"),
+	config = require("editor.leap"),
 }
 editor["RRethy/vim-illuminate"] = {
 	lazy = true,
