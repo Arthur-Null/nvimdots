@@ -36,7 +36,7 @@ local palette = nil
 ---@return palette
 local function init_palette()
 	if not palette then
-		palette = vim.g.colors_name == "catppuccin" and require("catppuccin.palettes").get_palette()
+		palette = vim.g.colors_name:find("catppuccin") and require("catppuccin.palettes").get_palette()
 			or {
 				rosewater = "#DC8A78",
 				flamingo = "#DD7878",
@@ -110,9 +110,9 @@ function M.hl_to_rgb(hl_group, use_bg, fallback_hl)
 	if hlexists then
 		local result = vim.api.nvim_get_hl(0, { name = hl_group, link = false })
 		if use_bg then
-			hex = result.bg and result.bg or "NONE"
+			hex = result.bg and string.format("#%06x", result.bg) or "NONE"
 		else
-			hex = result.fg and result.fg or "NONE"
+			hex = result.fg and string.format("#%06x", result.fg) or "NONE"
 		end
 	end
 
@@ -212,7 +212,7 @@ function M.tobool(value)
 		vim.notify(
 			"Attempting to convert data of type '" .. type(value) .. "' [other than 0 or 1] to boolean",
 			vim.log.levels.ERROR,
-			{ title = "[utils] Runtime error" }
+			{ title = "[utils] Runtime Error" }
 		)
 		return nil
 	end

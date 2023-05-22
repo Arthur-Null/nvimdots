@@ -58,7 +58,7 @@ local function load_options()
 		relativenumber = true,
 		ruler = true,
 		scrolloff = 2,
-		sessionoptions = "curdir,help,tabpages,winsize",
+		sessionoptions = "buffers,curdir,help,tabpages,winsize",
 		shada = "!,'300,<50,@100,s10,h",
 		shiftround = true,
 		shiftwidth = 4,
@@ -110,12 +110,9 @@ local function load_options()
 	if not isempty(conda_prefix) then
 		vim.g.python_host_prog = conda_prefix .. "/bin/python"
 		vim.g.python3_host_prog = conda_prefix .. "/bin/python"
-	elseif global.is_mac then
-		vim.g.python_host_prog = "/usr/bin/python"
-		vim.g.python3_host_prog = "/usr/local/bin/python3"
 	else
-		vim.g.python_host_prog = "/usr/bin/python"
-		vim.g.python3_host_prog = "/usr/bin/python3"
+		vim.g.python_host_prog = "python"
+		vim.g.python3_host_prog = "python3"
 	end
 
 	for name, value in pairs(global_local) do

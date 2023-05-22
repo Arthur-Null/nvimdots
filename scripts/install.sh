@@ -204,7 +204,7 @@ fi
 if ! command -v nvim >/dev/null; then
 	abort "$(
 		cat <<EOABORT
-You must install NeoVim before installing this Nvim config. See:
+You must install Neovim before installing this Nvim config. See:
   ${tty_underline}https://github.com/neovim/neovim/wiki/Installing-Neovim${tty_reset}
 EOABORT
 	)"
@@ -247,21 +247,37 @@ if [[ -d "${DEST_DIR}" ]]; then
 fi
 
 info "Fetching in progress..."
-if [[ "$USE_SSH" -eq "1" ]]; then
-	if is_latest; then
-		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "git@github.com:Arthur-Null/nvimdots.git" "${DEST_DIR}"
-	else
+if [[ "${USE_SSH}" -eq "1" ]]; then
+	if check_nvim_version "${REQUIRED_NVIM_VERSION}"; then
+		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "git@github.com:ayamir/nvimdots.git" "${DEST_DIR}"
+	elif check_nvim_version "${REQUIRED_NVIM_VERSION_LEGACY}"; then
 		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
-		prompt "Automatically redirecting you to legacy version..."
-		execute "git" "clone" "-b" "0.7" "${CLONE_ATTR[@]}" "git@github.com:Arthur-Null/nvimdots.git" "${DEST_DIR}"
+		info "Automatically redirecting you to the latest compatible version..."
+		execute "git" "clone" "-b" "0.8" "${CLONE_ATTR[@]}" "git@github.com:ayamir/nvimdots.git" "${DEST_DIR}"
+	else
+		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION_LEGACY})."
+		abort "$(
+			cat <<EOABORT
+You have a legacy Neovim distribution installed.
+Please make sure you have nvim v${REQUIRED_NVIM_VERSION_LEGACY} installed at the very least.
+EOABORT
+		)"
 	fi
 else
-	if is_latest; then
-		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "https://github.com/Arthur-Null/nvimdots.git" "${DEST_DIR}"
-	else
+	if check_nvim_version "${REQUIRED_NVIM_VERSION}"; then
+		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "https://github.com/ayamir/nvimdots.git" "${DEST_DIR}"
+	elif check_nvim_version "${REQUIRED_NVIM_VERSION_LEGACY}"; then
 		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
-		prompt "Automatically redirecting you to legacy version..."
-		execute "git" "clone" "-b" "0.7" "${CLONE_ATTR[@]}" "https://github.com/Arthur-Null/nvimdots.git" "${DEST_DIR}"
+		info "Automatically redirecting you to the latest compatible version..."
+		execute "git" "clone" "-b" "0.8" "${CLONE_ATTR[@]}" "https://github.com/ayamir/nvimdots.git" "${DEST_DIR}"
+	else
+		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION_LEGACY})."
+		abort "$(
+			cat <<EOABORT
+You have a legacy Neovim distribution installed.
+Please make sure you have nvim v${REQUIRED_NVIM_VERSION_LEGACY} installed at the very least.
+EOABORT
+		)"
 	fi
 fi
 
@@ -272,7 +288,7 @@ if [[ "${USE_SSH}" -eq "0" ]]; then
 	execute "perl" "-pi" "-e" "s/\[\"use_ssh\"\] \= true/\[\"use_ssh\"\] \= false/g" "${DEST_DIR}/lua/core/settings.lua"
 fi
 
-info "Spawning neovim and fetching plugins... (You'll be redirected shortly)"
+info "Spawning Neovim and fetching plugins... (You'll be redirected shortly)"
 info "If lazy.nvim failed to fetch any plugin(s), maunally execute \`:Lazy sync\` until everything is up-to-date."
 cat <<EOS
 
