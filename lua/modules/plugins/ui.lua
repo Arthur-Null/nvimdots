@@ -10,8 +10,9 @@ ui["akinsho/bufferline.nvim"] = {
 	event = { "BufReadPost", "BufAdd", "BufNewFile" },
 	config = require("ui.bufferline"),
 }
-ui["catppuccin/nvim"] = {
+ui["Jint-lzxy/nvim"] = {
 	lazy = false,
+	branch = "refactor/syntax-highlighting",
 	name = "catppuccin",
 	config = require("ui.catppuccin"),
 }
@@ -21,6 +22,7 @@ ui["sainnhe/edge"] = {
 }
 ui["j-hui/fidget.nvim"] = {
 	lazy = true,
+	branch = "legacy",
 	event = "LspAttach",
 	config = require("ui.fidget"),
 }
@@ -44,11 +46,11 @@ ui["zbirenbaum/neodim"] = {
 	event = "LspAttach",
 	config = require("ui.neodim"),
 }
--- ui["karb94/neoscroll.nvim"] = {
--- 	lazy = true,
--- 	event = "BufReadPost",
--- 	config = require("ui.neoscroll"),
--- }
+ui["karb94/neoscroll.nvim"] = {
+	lazy = true,
+	event = { "CursorHold", "CursorHoldI" },
+	config = require("ui.neoscroll"),
+}
 ui["shaunsingh/nord.nvim"] = {
 	lazy = true,
 	config = require("ui.nord"),
@@ -65,7 +67,7 @@ ui["folke/paint.nvim"] = {
 }
 ui["dstein64/nvim-scrollview"] = {
 	lazy = true,
-	event = "BufReadPost",
+	event = { "BufReadPost", "BufAdd", "BufNewFile" },
 	config = require("ui.scrollview"),
 }
 ui["edluffy/specs.nvim"] = {

@@ -2,17 +2,22 @@ local completion = {}
 
 completion["neovim/nvim-lspconfig"] = {
 	lazy = true,
-	event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	event = { "CursorHold", "CursorHoldI" },
 	config = require("completion.lsp"),
 	dependencies = {
-		{ "ray-x/lsp_signature.nvim" },
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
 		{
-			"nvimdev/lspsaga.nvim",
-			config = require("completion.lspsaga"),
+			"Jint-lzxy/lsp_signature.nvim",
+			config = require("completion.lsp-signature"),
 		},
 	},
+}
+completion["nvimdev/lspsaga.nvim"] = {
+	lazy = true,
+	event = "LspAttach",
+	config = require("completion.lspsaga"),
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
 	lazy = true,
@@ -42,7 +47,7 @@ completion["hrsh7th/nvim-cmp"] = {
 		{ "f3fora/cmp-spell" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "kdheepak/cmp-latex-symbols" },
-		{ "ray-x/cmp-treesitter" },
+		{ "ray-x/cmp-treesitter", commit = "c8e3a74" },
 		-- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
 		-- {
 		-- 	"jcdickinson/codeium.nvim",
