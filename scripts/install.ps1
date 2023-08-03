@@ -355,11 +355,11 @@ You must install Git before installing this Nvim config. See:
 
 	if ($USE_SSH) {
 		if ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION)) {
-			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'git@github.com:ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'git@github.com:Arthur-Null/nvimdots.git' "$env:CCDEST_DIR" }
 		} elseif ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION_LEGACY)) {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION)."
 			info -Msg "Automatically redirecting you to the latest compatible version..."
-			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'git@github.com:ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'git@github.com:Arthur-Null/nvimdots.git' "$env:CCDEST_DIR" }
 		} else {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION_LEGACY)."
 			_abort -Msg "This Neovim distribution is no longer supported." -Type "NotImplemented" -Info_msg @"
@@ -370,11 +370,11 @@ Please make sure you have nvim v$REQUIRED_NVIM_VERSION_LEGACY installed at the v
 		}
 	} else {
 		if ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION)) {
-			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'https://github.com/ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'https://github.com/Arthur-Null/nvimdots.git' "$env:CCDEST_DIR" }
 		} elseif ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION_LEGACY)) {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION)."
 			info -Msg "Automatically redirecting you to the latest compatible version..."
-			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'https://github.com/ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'https://github.com/Arthur-Null/nvimdots.git' "$env:CCDEST_DIR" }
 		} else {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION_LEGACY)."
 			_abort -Msg "This Neovim distribution is no longer supported." -Type "NotImplemented" -Info_msg @"
@@ -397,8 +397,11 @@ Please make sure you have nvim v$REQUIRED_NVIM_VERSION_LEGACY installed at the v
 	}
 
 	info -Msg "Spawning Neovim and fetching plugins... (You'll be redirected shortly)"
-	info -Msg 'To make sqlite work with lua, manually grab the dlls from "https://www.sqlite.org/download.html" and'
-	info_ext -Msg 'replace vim.g.sqlite_clib_path with your path at the bottom of `lua/core/options.lua`'
+	info -Msg 'To make sqlite work with lua, manually grab the dlls from "https://www.sqlite.org/download.html" and replace'
+	info_ext -Msg 'vim.g.sqlite_clib_path with your path at the bottom of `lua/core/options.lua`.'
+	info -Msg 'Also, please make sure you have a Rust Toolchain installed via `rustup`! Otherwise, unexpected things may'
+	info_ext -Msg 'happen. See: https://www.rust-lang.org/tools/install.      ¯¯¯¯¯¯¯¯¯¯¯¯'
+	info_ext -Msg '             ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯'
 	info -Msg 'If lazy.nvim failed to fetch any plugin(s), maunally execute `:Lazy sync` until everything is up-to-date.'
 	Write-Host @'
 
