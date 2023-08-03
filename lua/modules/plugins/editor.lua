@@ -56,17 +56,42 @@ editor["junegunn/vim-easy-align"] = {
 	lazy = true,
 	cmd = "EasyAlign",
 }
--- editor["phaazon/hop.nvim"] = {
--- 	lazy = true,
--- 	branch = "v2",
--- 	event = "BufReadPost",
--- 	config = require("editor.hop"),
--- }
-editor["ggandor/leap.nvim"] = {
+editor["phaazon/hop.nvim"] = {
 	lazy = true,
-	dependencies = { "tpope/vim-repeat" },
+	branch = "v2",
 	event = "BufReadPost",
-	config = require("editor.leap"),
+	config = require("editor.hop"),
+}
+editor["folke/flash.nvim"] = {
+	lazy = true,
+	opts = {},
+	event = "VeryLazy",
+	keys = {
+		{
+			"S",
+			mode = { "n", "o", "x" },
+			function()
+				require("flash").treesitter()
+			end,
+			desc = "Flash Treesitter",
+		},
+		{
+			"r",
+			mode = "o",
+			function()
+				require("flash").remote()
+			end,
+			desc = "Remote Flash",
+		},
+		{
+			"R",
+			mode = { "o", "x" },
+			function()
+				require("flash").treesitter_search()
+			end,
+			desc = "Treesitter Search",
+		},
+	},
 }
 editor["RRethy/vim-illuminate"] = {
 	lazy = true,
