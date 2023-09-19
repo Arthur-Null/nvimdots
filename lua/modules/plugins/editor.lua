@@ -68,7 +68,7 @@ editor["folke/flash.nvim"] = {
 	event = "VeryLazy",
 	keys = {
 		{
-			"S",
+			"L",
 			mode = { "n", "o", "x" },
 			function()
 				require("flash").treesitter()
