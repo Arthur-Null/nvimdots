@@ -1,5 +1,5 @@
 return function()
-	require("modules.utils").load_plugin("indent_blankline", {
+	require("modules.utils").load_plugin("ibl", {
 		char = "│",
 		context_char = "┃",
 		show_first_indent_level = true,
