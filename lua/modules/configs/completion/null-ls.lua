@@ -9,9 +9,12 @@ return function()
 		btns.formatting.black.with({
 			extra_args = { "--fast", "--line-length", "120" },
 		}),
-		btns.formatting.isort.with({
-			extra_args = { "--line-length", "120", "--profile", "black" },
+		btns.formatting.ruff.with({
+			extra_args = { "--line-length", "120" },
 		}),
+		-- btns.formatting.isort.with({
+		-- 	extra_args = { "--line-length", "120", "--profile", "black" },
+		-- }),
 		btns.formatting.clang_format.with({
 			filetypes = { "c", "cpp" },
 			extra_args = require("completion.formatters.clang_format"),
