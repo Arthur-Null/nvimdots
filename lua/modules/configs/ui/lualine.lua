@@ -16,36 +16,69 @@ return function()
 				require("lualine").setup({ options = { theme = custom_theme() } })
 			end,
 		})
+        local p = require('rose-pine.palette')
 
-		colors = require("modules.utils").get_palette()
-		local universal_bg = require("core.settings").transparent_background and "NONE" or colors.mantle
-		return {
-			normal = {
-				a = { fg = colors.lavender, bg = colors.surface0, gui = "bold" },
-				b = { fg = colors.text, bg = universal_bg },
-				c = { fg = colors.text, bg = universal_bg },
-			},
-			command = {
-				a = { fg = colors.peach, bg = colors.surface0, gui = "bold" },
-			},
-			insert = {
-				a = { fg = colors.green, bg = colors.surface0, gui = "bold" },
-			},
-			visual = {
-				a = { fg = colors.flamingo, bg = colors.surface0, gui = "bold" },
-			},
-			terminal = {
-				a = { fg = colors.teal, bg = colors.surface0, gui = "bold" },
-			},
-			replace = {
-				a = { fg = colors.red, bg = colors.surface0, gui = "bold" },
-			},
-			inactive = {
-				a = { fg = colors.subtext0, bg = universal_bg, gui = "bold" },
-				b = { fg = colors.subtext0, bg = universal_bg },
-				c = { fg = colors.subtext0, bg = universal_bg },
-			},
-		}
+        return {
+        	normal = {
+        		a = { bg = p.rose, fg = p.base, gui = 'bold' },
+        		b = { bg = p.overlay, fg = p.rose },
+        		c = { bg = p.base, fg = p.text },
+        	},
+        	insert = {
+        		a = { bg = p.foam, fg = p.base, gui = 'bold' },
+        		b = { bg = p.overlay, fg = p.foam },
+        		c = { bg = p.base, fg = p.text },
+        	},
+        	visual = {
+        		a = { bg = p.iris, fg = p.base, gui = 'bold' },
+        		b = { bg = p.overlay, fg = p.iris },
+        		c = { bg = p.base, fg = p.text },
+        	},
+        	replace = {
+        		a = { bg = p.pine, fg = p.base, gui = 'bold' },
+        		b = { bg = p.overlay, fg = p.pine },
+        		c = { bg = p.base, fg = p.text },
+        	},
+        	command = {
+        		a = { bg = p.love, fg = p.base, gui = 'bold' },
+        		b = { bg = p.overlay, fg = p.love },
+        		c = { bg = p.base, fg = p.text },
+        	},
+        	inactive = {
+        		a = { bg = p.base, fg = p.muted, gui = 'bold' },
+        		b = { bg = p.base, fg = p.muted },
+        		c = { bg = p.base, fg = p.muted },
+        	},
+        }
+		-- colors = require("modules.utils").get_palette()
+		-- local universal_bg = require("core.settings").transparent_background and "NONE" or colors.mantle
+		-- return {
+		-- 	normal = {
+		-- 		a = { fg = colors.lavender, bg = colors.surface0, gui = "bold" },
+		-- 		b = { fg = colors.text, bg = universal_bg },
+		-- 		c = { fg = colors.text, bg = universal_bg },
+		-- 	},
+		-- 	command = {
+		-- 		a = { fg = colors.peach, bg = colors.surface0, gui = "bold" },
+		-- 	},
+		-- 	insert = {
+		-- 		a = { fg = colors.green, bg = colors.surface0, gui = "bold" },
+		-- 	},
+		-- 	visual = {
+		-- 		a = { fg = colors.flamingo, bg = colors.surface0, gui = "bold" },
+		-- 	},
+		-- 	terminal = {
+		-- 		a = { fg = colors.teal, bg = colors.surface0, gui = "bold" },
+		-- 	},
+		-- 	replace = {
+		-- 		a = { fg = colors.red, bg = colors.surface0, gui = "bold" },
+		-- 	},
+		-- 	inactive = {
+		-- 		a = { fg = colors.subtext0, bg = universal_bg, gui = "bold" },
+		-- 		b = { fg = colors.subtext0, bg = universal_bg },
+		-- 		c = { fg = colors.subtext0, bg = universal_bg },
+		-- 	},
+		-- }
 	end
 
 	local mini_sections = {
